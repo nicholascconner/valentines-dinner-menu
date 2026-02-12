@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raise a Glass to NOG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #faf5ed;
+            --paper: #ede4d4;
+            --rose: #c4556e;
+            --wine: #7b2d42;
+            --gold: #b89a6a;
+            --gold-light: #d4bc8e;
+            --ink: #3a2a20;
+            --blush: #d4a8a8;
+            --light-rose: #d4838f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--paper);
+            background-image:
+                radial-gradient(ellipse at 25% 15%, rgba(196, 85, 110, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 85%, rgba(184, 154, 106, 0.08) 0%, transparent 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            font-family: 'Cormorant Garamond', 'Garamond', 'Georgia', serif;
+        }
+
+        /* ── Card ── */
+        .menu-card {
+            background:
+                linear-gradient(160deg, rgba(255,255,255,0.25) 0%, transparent 35%, rgba(0,0,0,0.015) 100%),
+                var(--cream);
+            width: 100%;
+            max-width: 440px;
+            padding: 3rem 2.2rem 2.4rem;
+            position: relative;
+            text-align: center;
+            color: var(--ink);
+            border: 2px solid var(--rose);
+            box-shadow:
+                0 1px 3px rgba(58,42,32,0.06),
+                0 6px 16px rgba(58,42,32,0.05),
+                0 16px 40px rgba(58,42,32,0.04);
+            animation: cardIn 1.2s ease-out;
+        }
+
+        /* Inner border */
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+        }
+
+        /* Corner diamonds */
+        .corner { position: absolute; z-index: 1; }
+        .corner svg {
+            width: 7px; height: 7px;
+            color: var(--gold);
+            display: block;
+        }
+        .corner-tl { top: 4px; left: 4px; }
+        .corner-tr { top: 4px; right: 4px; }
+        .corner-bl { bottom: 4px; left: 4px; }
+        .corner-br { bottom: 4px; right: 4px; }
+
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Header ── */
+        .header-heart {
+            color: var(--rose);
+            margin-bottom: 0.6rem;
+            line-height: 1;
+        }
+        .header-heart svg {
+            animation: heartbeat 2.4s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14%      { transform: scale(1.12); }
+            28%      { transform: scale(1); }
+            42%      { transform: scale(1.08); }
+            56%      { transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.7rem;
+            font-weight: 400;
+            color: var(--wine);
+            line-height: 1.15;
+            margin-bottom: 0.35rem;
+        }
+
+        .subtitle {
+            font-size: 0.72rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        /* ── Dividers ── */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 1.15rem auto;
+            max-width: 180px;
+        }
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+        .divider svg {
+            width: 9px; height: 9px;
+            color: var(--light-rose);
+            flex-shrink: 0;
+            opacity: 0.85;
+        }
+
+        /* ── Sections ── */
+        .section-title {
+            font-size: 0.68rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--light-rose);
+            font-weight: 500;
+            margin-bottom: 0.55rem;
+        }
+
+        .dish {
+            font-size: 1.18rem;
+            font-weight: 400;
+            color: var(--ink);
+            line-height: 1.45;
+        }
+
+        .dish-note {
+            font-size: 0.88rem;
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 300;
+            margin-top: 0.1rem;
+        }
+
+        .or-sep {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            color: var(--blush);
+            margin: 0.3rem 0;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* Sides */
+        .sides {
+            margin-top: 0.35rem;
+            line-height: 1.55;
+        }
+        .sides p {
+            font-size: 1.02rem;
+            font-weight: 300;
+            color: var(--ink);
+        }
+
+        /* Wine */
+        .wine-pairing {
+            margin-top: 0.75rem;
+            padding-top: 0.55rem;
+        }
+        .wine-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--blush);
+            font-weight: 300;
+        }
+        .wine-name {
+            font-size: 1.02rem;
+            font-style: italic;
+            color: var(--wine);
+            margin-top: 0.05rem;
+            font-weight: 400;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            margin-top: 0.3rem;
+            line-height: 1;
+        }
+        .footer svg {
+            width: 8px; height: 8px;
+            color: var(--rose);
+            opacity: 0.7;
+            margin-bottom: 0.3rem;
+        }
+        .footer-text {
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--blush);
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* ── Print ── */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                min-height: auto;
+            }
+            .menu-card {
+                max-width: none;
+                width: 4.8in;
+                margin: auto;
+                box-shadow: none;
+                animation: none;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .header-heart svg { animation: none; }
+            @page {
+                margin: 1.2in 1.5in;
+                size: letter;
+            }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 500px) {
+            body { padding: 1rem; }
+            .menu-card { padding: 2.4rem 1.6rem 2rem; }
+            h1 { font-size: 2.2rem; }
+            .dish { font-size: 1.08rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-card">
+
+        <!-- Corner ornaments -->
+        <div class="corner corner-tl"><svg viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></div>
+        <div class="corner corner-tr"><svg viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></div>
+        <div class="corner corner-bl"><svg viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></div>
+        <div class="corner corner-br"><svg viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg></div>
+
+        <!-- Header -->
+        <div class="header-heart">
+            <svg viewBox="0 0 24 22" width="26" height="24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+            </svg>
+        </div>
+        <h1>Raise a Glass to NOG</h1>
+        <p class="subtitle">Valentine's Day &middot; 2026</p>
+
+        <!-- ─── Cocktail Hour ─── -->
+        <div class="divider">
+            <span class="divider-line"></span>
+            <svg viewBox="0 0 24 22"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+            <span class="divider-line"></span>
+        </div>
+
+        <section>
+            <p class="section-title">Cocktail Hour</p>
+            <p class="dish">Mezcal&ndash;Amaretto Sour</p>
+            <p class="or-sep">&mdash; or &mdash;</p>
+            <p class="dish">Filthy Dirty Martini</p>
+        </section>
+
+        <!-- ─── To Start ─── -->
+        <div class="divider">
+            <span class="divider-line"></span>
+            <svg viewBox="0 0 24 22"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+            <span class="divider-line"></span>
+        </div>
+
+        <section>
+            <p class="section-title">To Start</p>
+            <p class="dish">Prosciutto-Wrapped Turkish Figs</p>
+            <p class="dish-note">with honey &amp; cracked black pepper</p>
+        </section>
+
+        <!-- ─── Main Course ─── -->
+        <div class="divider">
+            <span class="divider-line"></span>
+            <svg viewBox="0 0 24 22"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+            <span class="divider-line"></span>
+        </div>
+
+        <section>
+            <p class="section-title">The Main Course</p>
+            <p class="dish">Red-Wine Braised Short Ribs</p>
+            <div class="sides">
+                <p>Parmesan Polenta</p>
+                <p>Lemon-Roasted Broccolini</p>
+            </div>
+            <div class="wine-pairing">
+                <p class="wine-label">paired with</p>
+                <p class="wine-name">&ldquo;The Resistance Blend&rdquo; GSM</p>
+            </div>
+        </section>
+
+        <!-- ─── Dessert ─── -->
+        <div class="divider">
+            <span class="divider-line"></span>
+            <svg viewBox="0 0 24 22"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+            <span class="divider-line"></span>
+        </div>
+
+        <section>
+            <p class="section-title">To Finish</p>
+            <p class="dish">Vanilla Bean Panna Cotta</p>
+        </section>
+
+        <!-- ─── Footer ─── -->
+        <div class="divider">
+            <span class="divider-line"></span>
+            <svg viewBox="0 0 24 22"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+            <span class="divider-line"></span>
+        </div>
+
+        <div class="footer">
+            <svg viewBox="0 0 24 22">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+            </svg>
+            <p class="footer-text">With help from Nala, Shirley, Debbie, &amp; Toothless</p>
+        </div>
+    </div>
+</body>
+</html>
